@@ -3,7 +3,7 @@ require( '../../../init.php' );
 $whmcs->load_function( 'gateway' );
 $whmcs->load_function( 'invoice' );
 
-ini_set("error_log","Loglar");
+//ini_set("error_log","Loglar");
 
 $gatewayModuleName = basename(__FILE__, '.php');
 $GATEWAY = getGatewayVariables($gatewayModuleName);
@@ -35,16 +35,15 @@ $productdesc = $_GET['productdesc'];
 $mpay = $_GET['mpay'];
 $channel = $_GET['channel'];
 
-error_log("Request from ".$_SERVER['REMOTE_ADDR'],0);
-error_log(print_r($_GET,true),0);
+//error_log("Request from ".$_SERVER['REMOTE_ADDR'],0);
+//error_log(print_r($_GET,true),0);
 if ($state == '100') {
-	error_log("Verilebilir",0);
+	//error_log("Verilebilir",0);
 	if((($_SERVER['REMOTE_ADDR'] == '46.34.90.215' || $_SERVER['REMOTE_ADDR'] == '195.46.135.110' || $_SERVER['REMOTE_ADDR'] == '46.34.90.216' || $_SERVER['REMOTE_ADDR'] == '46.20.6.4'))){
-		error_log("Odeme Tutari : ".$price,0);
-		$mpay = str_replace("VPSCenter-","",$mpay);
+		//error_log("Odeme Tutari : ".$price,0);
 		addInvoicePayment( $mpay, $mpay, '', '', $GATEWAY['name'] );
 		logTransaction($GATEWAY['name'], $_POST,'Successful');
-		error_log("Odeme ok",0);
+		//error_log("Odeme ok",0);
 	}
 }
 logTransaction( $GATEWAY['name'], $_POST, 'Unsuccessful' );
