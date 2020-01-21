@@ -37,6 +37,7 @@ function threepaymobil_link($params) {
 			$result = $connect->SaleWithTicket($data);
 			if ($result->SaleWithTicketResult->StatusCode == '0') {
 				header('Location: '.$result->SaleWithTicketResult->RedirectUrl);
+				$return = '<form action="'.$result->SaleWithTicketResult->RedirectUrl.'" id="otoyon" method="post"></form><script type="text/javascript">otoyon.submit();</script>';
 			}else
 				$return .= '<font color="red">Bir hata oluştu. Code : '.$result->SaleWithTicketResult->ErrorCode.' Message : '.$result->SaleWithTicketResult->ErrorMessage.'</font>';
 		}else{
